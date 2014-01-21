@@ -9,7 +9,6 @@ import java.util.List;
 /**
  * Sole implementatiom of {@link PhoneListService}.
  */
-@Component
 public class PhoneListServiceImpl implements PhoneListService {
     @Override
     public List<Phone> getPhones() {
