@@ -1,7 +1,8 @@
 package com.springinaction.firstmvc.controller;
 
-import com.springinaction.firstmvc.service.PhoneListService;
+import com.springinaction.firstmvc.service.PhoneService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.inject.Inject;
@@ -12,17 +13,17 @@ import java.util.Map;
  */
 @Controller
 public class HomeController {
-    private PhoneListService phoneListService;
+    private final PhoneService phoneService;
 
     @Inject
-    public HomeController(PhoneListService phoneListService) {
-        this.phoneListService = phoneListService;
+    public HomeController(PhoneService phoneService) {
+        this.phoneService = phoneService;
     }
 
     @RequestMapping({"/", "/home"})
-    public String showHomePage(Map<String, Object> model) {
-        model.put("greeting", "Hello to the Phone Catalog!");
-        model.put("phones", phoneListService.getPhones());
+    public String showHomePage(Model model) {
+        model.addAttribute("greeting", "Welcome to the Phone Catalog");
+        model.addAttribute(phoneService.getPhones());
         return "home";
     }
 }

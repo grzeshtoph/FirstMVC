@@ -8,10 +8,23 @@ import com.google.common.base.Objects;
 public class Phone {
     private long id;
     private String name;
+    private int price;
+    private String opinion;
 
-    public Phone(long id, String name) {
+    public void setId(long id) {
         this.id = id;
+    }
+
+    public void setName(String name) {
         this.name = name;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public void setOpinion(String opinion) {
+        this.opinion = opinion;
     }
 
     public long getId() {
@@ -22,8 +35,17 @@ public class Phone {
         return name;
     }
 
+    public int getPrice() {
+        return price;
+    }
+
+    public String getOpinion() {
+        return opinion;
+    }
+
     @Override
     public String toString() {
-        return Objects.toStringHelper(this).add("id", id).add("name", name).toString();
+        return Objects.toStringHelper(this).add("id", id).add("name", name).add("price", price)
+                .add("opinion", opinion).toString();
     }
 }
