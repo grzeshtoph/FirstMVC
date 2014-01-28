@@ -28,10 +28,14 @@
                 <s:param name="phoneId" value="${phone.id}"/>
             </s:url>
             <div class="col-sm-3">
-                <h3>${phone.id}</h3>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3>${phone.id}</h3>
 
-                <p>${phone.name}</p>
-                <a class="btn btn-default" href="${phoneDetailsUrl}">Details</a>
+                        <p>${phone.name}</p>
+                        <a class="btn btn-default" href="${phoneDetailsUrl}">Details</a>
+                    </div>
+                </div>
             </div>
         </c:forEach>
     </div>

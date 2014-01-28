@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%--style libs--%>
     <link href="<s:url value="/resources" />/css/bootstrap.css" rel="stylesheet"/>
+    <link href="<s:url value="/resources" />/css/style.css" rel="stylesheet"/>
 </head>
 <body>
 <div class="navbar navbar-inverse navbar-static-top">
