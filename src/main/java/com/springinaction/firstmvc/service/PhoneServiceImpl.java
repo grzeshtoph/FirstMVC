@@ -1,13 +1,10 @@
 package com.springinaction.firstmvc.service;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableSortedSet;
 import com.google.common.primitives.Longs;
-import com.springinaction.firstmvc.model.Phone;
+import com.springinaction.firstmvc.model.persistence.Phone;
 
 import java.util.Comparator;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 

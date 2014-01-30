@@ -7,22 +7,22 @@
         <property name="phonesMap">
             <map>
                 <entry key="111">
-                    <bean class="com.springinaction.firstmvc.model.Phone"
+                    <bean class="com.springinaction.firstmvc.model.persistence.Phone"
                           p:id="111" p:name="Motorola ABC" p:opinion="Good, as for Motorola"
                           p:price="450"/>
                 </entry>
                 <entry key="236">
-                    <bean class="com.springinaction.firstmvc.model.Phone"
+                    <bean class="com.springinaction.firstmvc.model.persistence.Phone"
                           p:id="236" p:name="MOTOROLA 543" p:opinion="No bad"
                           p:price="300"/>
                 </entry>
                 <entry key="789">
-                    <bean class="com.springinaction.firstmvc.model.Phone"
+                    <bean class="com.springinaction.firstmvc.model.persistence.Phone"
                           p:id="789" p:name="Dell XYZ" p:opinion="Best of all DELLs"
                           p:price="510"/>
                 </entry>
                 <entry key="234">
-                    <bean class="com.springinaction.firstmvc.model.Phone"
+                    <bean class="com.springinaction.firstmvc.model.persistence.Phone"
                           p:id="234" p:name="Samsung S3" p:opinion="Simple the best"
                           p:price="720"/>
                 </entry>

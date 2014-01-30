@@ -1,8 +1,7 @@
 package com.springinaction.firstmvc.service;
 
-import com.springinaction.firstmvc.model.Phone;
+import com.springinaction.firstmvc.model.persistence.Phone;
 
-import java.util.List;
 import java.util.Set;
 
 /**

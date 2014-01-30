@@ -1,6 +1,6 @@
 package com.springinaction.firstmvc.controller;
 
-import com.springinaction.firstmvc.model.Phone;
+import com.springinaction.firstmvc.model.persistence.Phone;
 import com.springinaction.firstmvc.service.PhoneService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

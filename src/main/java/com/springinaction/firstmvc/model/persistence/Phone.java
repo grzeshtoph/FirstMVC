@@ -1,4 +1,4 @@
-package com.springinaction.firstmvc.model;
+package com.springinaction.firstmvc.model.persistence;
 
 import com.google.common.base.Objects;
 
