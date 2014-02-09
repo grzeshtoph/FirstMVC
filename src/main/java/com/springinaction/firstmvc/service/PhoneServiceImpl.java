@@ -1,35 +1,27 @@
 package com.springinaction.firstmvc.service;
 
-import com.google.common.collect.ImmutableSortedSet;
-import com.google.common.primitives.Longs;
+import com.springinaction.firstmvc.dao.PhoneDAO;
 import com.springinaction.firstmvc.model.persistence.Phone;
 
-import java.util.Comparator;
-import java.util.Map;
-import java.util.Set;
+import java.util.List;
 
 /**
  * Sole implementatiom of {@link PhoneService}.
  */
 public class PhoneServiceImpl implements PhoneService {
-    private Map<Long, Phone> phonesMap;
+    private PhoneDAO phoneDAO;
 
-    public void setPhonesMap(Map<Long, Phone> phonesMap) {
-        this.phonesMap = phonesMap;
+    public void setPhoneDAO(PhoneDAO phoneDAO) {
+        this.phoneDAO = phoneDAO;
     }
 
     @Override
-    public Set<Phone> getPhones() {
-        return ImmutableSortedSet.copyOf(new Comparator<Phone>() {
-            @Override
-            public int compare(Phone o1, Phone o2) {
-                return Longs.compare(o1.getId(), o2.getId());
-            }
-        }, phonesMap.values());
+    public List<Phone> getPhones() {
+        return phoneDAO.getPhones();
     }
 
     @Override
-    public Phone getPhone(long phoneId) {
-        return phonesMap.get(phoneId);
+    public Phone getPhone(String phoneId) {
+        return phoneDAO.getPhone(phoneId);
     }
 }

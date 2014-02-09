@@ -25,7 +25,7 @@ public class SinglePhoneController {
     }
 
     @RequestMapping(value = "/details", method = GET)
-    public String getDetails(@RequestParam("id") long phoneId, Model model) {
+    public String getDetails(@RequestParam("id") String phoneId, Model model) {
         Phone phone = phoneService.getPhone(phoneId);
         model.addAttribute(phone);
         return "phone/details";
