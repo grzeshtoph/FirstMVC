@@ -11,5 +11,7 @@ import java.util.Set;
 public interface PhoneService {
     List<Phone> getPhones();
 
+    List<Phone> getPhones(String name);
+
     Phone getPhone(String phoneId);
 }

@@ -6,7 +6,7 @@ import com.springinaction.firstmvc.model.persistence.Phone;
 import java.util.List;
 
 /**
- * Sole implementatiom of {@link PhoneService}.
+ * Sole implementation of {@link PhoneService}.
  */
 public class PhoneServiceImpl implements PhoneService {
     private PhoneDAO phoneDAO;
@@ -18,6 +18,11 @@ public class PhoneServiceImpl implements PhoneService {
     @Override
     public List<Phone> getPhones() {
         return phoneDAO.getPhones();
+    }
+
+    @Override
+    public List<Phone> getPhones(String name) {
+        return phoneDAO.getPhones(name);
     }
 
     @Override

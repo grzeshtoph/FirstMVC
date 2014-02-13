@@ -14,4 +14,8 @@
     <definition name="phone/details" extends="template">
         <put-attribute name="content" value="/WEB-INF/views/phoneDetails.jsp"/>
     </definition>
+
+    <definition name="phones/list" extends="template">
+        <put-attribute name="content" value="/WEB-INF/views/phonesList.jsp"/>
+    </definition>
 </tiles-definitions>

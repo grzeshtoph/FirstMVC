@@ -10,5 +10,7 @@ import java.util.List;
 public interface PhoneDAO {
     List<Phone> getPhones();
 
+    List<Phone> getPhones(String name);
+
     Phone getPhone(String id);
 }

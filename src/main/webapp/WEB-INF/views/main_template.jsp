@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="t" uri="http://tiles.apache.org/tags-tiles" %>
 <html>
 <head>
@@ -22,7 +23,7 @@
         </button>
 
         <div class="collapse navbar-collapse navHeaderCollapse">
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav">
                 <li class="active"><a href="<s:url value="/home"/>">Home</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Other <b class="caret"></b></a>
@@ -32,6 +33,15 @@
                     </ul>
                 </li>
             </ul>
+
+            <sf:form method="GET" action="phones/list">
+                <div class=" nav navbar-right navbar-btn input-group col-sm-3">
+                    <input type="text" class="form-control" placeholder="Enter name" name="name"/>
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">Search</button>
+                </span>
+                </div>
+            </sf:form>
         </div>
     </div>
 </div>

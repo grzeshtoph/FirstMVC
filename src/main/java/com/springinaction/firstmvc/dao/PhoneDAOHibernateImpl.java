@@ -4,7 +4,9 @@ import com.springinaction.firstmvc.model.persistence.Phone;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import javax.inject.Inject;
@@ -30,8 +32,13 @@ public class PhoneDAOHibernateImpl implements PhoneDAO {
 
     @Override
     public List<Phone> getPhones() {
-        List<Phone> phones = getCurrentSession().createCriteria(Phone.class).addOrder(Order.asc("id")).list();
-        return phones;
+        return getCurrentSession().createCriteria(Phone.class).addOrder(Order.asc("id")).list();
+    }
+
+    @Override
+    public List<Phone> getPhones(String name) {
+        return getCurrentSession().createCriteria(Phone.class)
+                .add(Restrictions.ilike("name", name, MatchMode.ANYWHERE)).addOrder(Order.asc("id")).list();
     }
 
     @Override
