@@ -7,12 +7,21 @@
                 template="/WEB-INF/views/main_template.jsp">
     </definition>
 
+    <definition name="new.phone.template" template="/WEB-INF/views/phoneEdit.jsp">
+        <put-attribute name="title" value="New Phone"/>
+        <put-attribute name="submitButtonLabel" value="Create"/>
+    </definition>
+
     <definition name="home" extends="template">
         <put-attribute name="content" value="/WEB-INF/views/home.jsp"/>
     </definition>
 
     <definition name="phone/details" extends="template">
         <put-attribute name="content" value="/WEB-INF/views/phoneDetails.jsp"/>
+    </definition>
+
+    <definition name="phone/new" extends="template">
+        <put-attribute name="content" value="new.phone.template"/>
     </definition>
 
     <definition name="phones/list" extends="template">

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="t" uri="http://tiles.apache.org/tags-tiles" %>
@@ -8,7 +9,7 @@
     <title>Phone Catalog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%--style libs--%>
-    <link href="<s:url value="/resources" />/css/bootstrap.css" rel="stylesheet"/>
+    <link href="<s:url value="/resources" />/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="<s:url value="/resources" />/css/style.css" rel="stylesheet"/>
 </head>
 <body>
@@ -24,7 +25,10 @@
 
         <div class="collapse navbar-collapse navHeaderCollapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="<s:url value="/home"/>">Home</a></li>
+                <li <c:if test="${pageActive eq 'home'}">class="active"</c:if>><a href="<s:url value="/home"/>">Home</a>
+                </li>
+                <li <c:if test="${pageActive eq 'new'}">class="active"</c:if>><a
+                        href="<s:url value="/phone/new"/>">New</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Other <b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -35,11 +39,11 @@
             </ul>
 
             <sf:form method="GET" action="phones/list">
-                <div class=" nav navbar-right navbar-btn input-group col-sm-3">
+                <div class="nav navbar-right navbar-btn input-group col-sm-3">
                     <input type="text" class="form-control" placeholder="Enter name" name="name"/>
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="submit">Search</button>
-                </span>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">Search</button>
+                    </span>
                 </div>
             </sf:form>
         </div>
@@ -57,7 +61,7 @@
 </div>
 
 <%--vendor libs--%>
-<script src="<s:url value="/resources" />/js/jquery-1.10.1.js"></script>
-<script src="<s:url value="/resources" />/js/bootstrap.js"></script>
+<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="<s:url value="/resources" />/js/bootstrap.min.js"></script>
 </body>
 </html>

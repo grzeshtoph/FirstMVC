@@ -1,6 +1,7 @@
 package com.springinaction.firstmvc.model.persistence;
 
 import com.google.common.base.Objects;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +9,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.math.BigDecimal;
 
 /**
@@ -21,12 +26,18 @@ public class Phone {
     @Column(name = "phone_pk")
     private long pk;
     @Column(name = "phone_id")
+    @Pattern(regexp = "\\d{1,10}+", message = "Phone Id must have digits only")
     private String id;
     @Column(name = "name")
+    @NotEmpty(message = "Phone name must not be empty")
     private String name;
     @Column(name = "price")
+    @NotNull(message = "Phone price must not be empty")
+    @DecimalMin(value = "5.00", message = "phone.validation.error.min.price")
+    @DecimalMax(value = "9999.99", message = "Maximum price for the phone is 9999.99 euro")
     private BigDecimal price;
     @Column(name = "opinion")
+    @NotEmpty(message = "Opinion must no be empty")
     private String opinion;
 
     public long getPk() {

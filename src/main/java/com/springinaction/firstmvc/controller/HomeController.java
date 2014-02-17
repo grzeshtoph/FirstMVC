@@ -24,6 +24,7 @@ public class HomeController {
     public String showHomePage(Model model) {
         model.addAttribute("greeting", "Welcome to the Phone Catalog");
         model.addAttribute(phoneService.getPhones());
+        model.addAttribute("pageActive", "home");
         return "home";
     }
 }

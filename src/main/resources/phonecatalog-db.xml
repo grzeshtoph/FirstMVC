@@ -28,4 +28,10 @@
     </bean>
 
     <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+
+    <bean name="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"
+          p:basename="phonecatalog-messages.properties"/>
+
+    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"
+          p:validationMessageSource="#{messageSource}"/>
 </beans>

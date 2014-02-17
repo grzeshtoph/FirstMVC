@@ -10,4 +10,4 @@
 > CREATE DATABASE phonecatalogdb WITH OWNER phonecatalog;
 > \q
 # psql -U phonecatalog -d phonecatalog
-> GRANT ALL PRIVILEGES ON DATABASE spitterdb to dbunit;
+> GRANT ALL PRIVILEGES ON DATABASE phonecatalogdb to dbunit;
