@@ -6,6 +6,7 @@ import com.springinaction.firstmvc.model.validation.UniquePhoneId;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.GroupSequence;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
@@ -17,6 +18,7 @@ import java.math.BigDecimal;
  */
 @Entity
 @Table(name = "PHONES")
+@GroupSequence({Phone.class, BusinessLogicChecks.class})
 public class Phone {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
