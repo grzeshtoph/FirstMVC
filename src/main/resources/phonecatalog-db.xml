@@ -5,9 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
        xmlns:p="http://www.springframework.org/schema/p">
-
     <context:property-placeholder location="classpath:phonecatalog.properties"/>
-    <context:component-scan base-package="com.springinaction.firstmvc.model.persistence"/>
 
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
           p:driverClassName="${db.driver}"
@@ -19,7 +17,12 @@
 
     <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
         <property name="dataSource" value="#{dataSource}"/>
-        <property name="packagesToScan" value="com.springinaction.firstmvc.model.persistence"/>
+        <property name="packagesToScan">
+            <list>
+                <value>com.springinaction.firstmvc.model.persistence</value>
+                <value>com.springinaction.firstmvc.model.validation</value>
+            </list>
+        </property>
         <property name="hibernateProperties">
             <props>
                 <prop key="dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
@@ -28,10 +31,4 @@
     </bean>
 
     <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
-
-    <bean name="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"
-          p:basename="phonecatalog-messages.properties"/>
-
-    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"
-          p:validationMessageSource="#{messageSource}"/>
 </beans>

@@ -8,10 +8,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import static org.springframework.web.bind.annotation.RequestMethod.*;
-
 import javax.inject.Inject;
 import javax.validation.Valid;
+
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 /**
  * MVC controller for displaying a phone details.
@@ -41,7 +42,8 @@ public class SinglePhoneController {
     }
 
     @RequestMapping(value = "/new", method = POST)
-    public String create(@Valid Phone phone, BindingResult bindingResult, Model model) {
+    public String create(@Valid Phone phone,
+                         BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("idHasValueErrors", bindingResult.getFieldErrorCount("id") > 0);
             model.addAttribute("nameHasValueErrors", bindingResult.getFieldErrorCount("name") > 0);
