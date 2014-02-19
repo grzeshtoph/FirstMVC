@@ -13,4 +13,6 @@ public interface PhoneDAO {
     List<Phone> getPhones(String name);
 
     Phone getPhone(String id);
+
+    long createNew(Phone phone);
 }

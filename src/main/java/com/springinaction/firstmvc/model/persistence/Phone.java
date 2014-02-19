@@ -19,9 +19,10 @@ import java.math.BigDecimal;
 @Entity
 @Table(name = "PHONES")
 @GroupSequence({Phone.class, BusinessLogicChecks.class})
+@SequenceGenerator(name = "phoneSequence", sequenceName = "PHONE_PK_SEQ", initialValue = 1, allocationSize = 1)
 public class Phone {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "phoneSequence")
     @Column(name = "phone_pk")
     private long pk;
     @Column(name = "phone_id")

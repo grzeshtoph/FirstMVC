@@ -25,7 +25,7 @@
 <div class="container">
     <div class="row">
         <c:forEach items="${phoneList}" var="phone">
-            <s:url var="phoneDetailsUrl" value="/phone/details?id={phoneId}">
+            <s:url var="phoneDetailsUrl" value="/phone/details/{phoneId}">
                 <s:param name="phoneId" value="${phone.id}"/>
             </s:url>
             <div class="col-sm-3">

@@ -5,6 +5,7 @@ import com.springinaction.firstmvc.service.PhoneService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -27,8 +28,17 @@ public class SinglePhoneController {
         this.phoneService = phoneService;
     }
 
+    @RequestMapping(value = "/details/{phoneId}", method = GET)
+    public String getDetailsForPathVariable(@PathVariable String phoneId, Model model) {
+        return getPhoneDetails(phoneId, model);
+    }
+
     @RequestMapping(value = "/details", method = GET)
-    public String getDetails(@RequestParam("id") String phoneId, Model model) {
+    public String getDetailsForParameter(@RequestParam("id") String phoneId, Model model) {
+        return getPhoneDetails(phoneId, model);
+    }
+
+    private String getPhoneDetails(String phoneId, Model model) {
         Phone phone = phoneService.getPhone(phoneId);
         model.addAttribute(phone);
         return "phone/details";
@@ -42,8 +52,7 @@ public class SinglePhoneController {
     }
 
     @RequestMapping(value = "/new", method = POST)
-    public String create(@Valid Phone phone,
-                         BindingResult bindingResult, Model model) {
+    public String create(@Valid Phone phone, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("idHasValueErrors", bindingResult.getFieldErrorCount("id") > 0);
             model.addAttribute("nameHasValueErrors", bindingResult.getFieldErrorCount("name") > 0);
@@ -53,6 +62,8 @@ public class SinglePhoneController {
             return "phone/new";
         }
 
-        return "redirect:/phone/details?id=" + phone.getId();
+        phoneService.createNew(phone);
+
+        return "redirect:/phone/details/" + phone.getId();
     }
 }

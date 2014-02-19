@@ -20,7 +20,6 @@
         <property name="packagesToScan">
             <list>
                 <value>com.springinaction.firstmvc.model.persistence</value>
-                <value>com.springinaction.firstmvc.model.validation</value>
             </list>
         </property>
         <property name="hibernateProperties">

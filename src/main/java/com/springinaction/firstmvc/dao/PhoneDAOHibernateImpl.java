@@ -47,4 +47,9 @@ public class PhoneDAOHibernateImpl implements PhoneDAO {
         query.setParameter("id", id);
         return (Phone) query.uniqueResult();
     }
+
+    @Override
+    public long createNew(Phone phone) {
+        return (Long) getCurrentSession().save(phone);
+    }
 }

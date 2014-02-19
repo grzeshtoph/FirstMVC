@@ -14,6 +14,7 @@
 
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
         <tx:attributes>
+            <tx:method name="get*" propagation="SUPPORTS"/>
             <tx:method name="*" propagation="REQUIRED" rollback-for="Throwable" timeout="1800"/>
         </tx:attributes>
     </tx:advice>
