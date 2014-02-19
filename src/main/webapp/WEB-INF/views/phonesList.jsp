@@ -14,7 +14,7 @@
                     <h3>${phone.id}</h3>
 
                     <p>${phone.name}</p>
-                    <a class="btn btn-default" href="${phoneDetailsUrl}">Details</a>
+                    <a class="btn btn-default" href="${phoneDetailsUrl}"><s:message code="button.details"/></a>
                 </div>
             </div>
         </div>

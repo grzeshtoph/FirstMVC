@@ -16,9 +16,9 @@
             lacus, semper interdum eros eget, iaculis porta purus. Etiam eu varius magna. Morbi vel diam a odio
             facilisis lobortis at ac turpis.</p>
 
-        <a class="btn btn-default">Watch Now!</a>
+        <a class="btn btn-default"><s:message code="button.watchNow"/></a>
 
-        <a class="btn btn-primary">Tweet It!</a>
+        <a class="btn btn-primary"><s:message code="button.tweetIt"/></a>
     </div>
 </div>
 
@@ -28,13 +28,17 @@
             <s:url var="phoneDetailsUrl" value="/phone/details/{phoneId}">
                 <s:param name="phoneId" value="${phone.id}"/>
             </s:url>
+            <s:url var="editPhoneUrl" value="/phone/edit/{phoneId}">
+                <s:param name="phoneId" value="${phone.id}"/>
+            </s:url>
             <div class="col-sm-3">
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <h3>${phone.id}</h3>
 
                         <p>${phone.name}</p>
-                        <a class="btn btn-default" href="${phoneDetailsUrl}">Details</a>
+                        <a class="btn btn-default" href="${phoneDetailsUrl}"><s:message code="button.details"/></a>
+                        <a class="btn btn-warning" href="${editPhoneUrl}"><s:message code="button.edit"/></a>
                     </div>
                 </div>
             </div>

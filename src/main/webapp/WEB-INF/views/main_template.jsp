@@ -6,7 +6,7 @@
 <%@ taglib prefix="t" uri="http://tiles.apache.org/tags-tiles" %>
 <html>
 <head>
-    <title>Phone Catalog</title>
+    <title><s:message code="app.title"/></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%--style libs--%>
     <link href="<s:url value="/resources" />/css/bootstrap.min.css" rel="stylesheet"/>
@@ -15,7 +15,7 @@
 <body>
 <div class="navbar navbar-inverse navbar-static-top">
     <div class="container">
-        <a href="<s:url value="/home"/>" class="navbar-brand">Phone Catalog</a>
+        <a href="<s:url value="/home"/>" class="navbar-brand"><s:message code="app.title"/></a>
 
         <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
             <span class="icon-bar"></span>
@@ -25,24 +25,37 @@
 
         <div class="collapse navbar-collapse navHeaderCollapse">
             <ul class="nav navbar-nav">
-                <li <c:if test="${pageActive eq 'home'}">class="active"</c:if>><a href="<s:url value="/home"/>">Home</a>
+                <li <c:if test="${pageActive eq 'home'}">class="active"</c:if>>
+                    <a href="<s:url value="/home"/>"><s:message code="button.home"/></a>
                 </li>
-                <li <c:if test="${pageActive eq 'new'}">class="active"</c:if>><a
-                        href="<s:url value="/phone/new"/>">New</a></li>
+                <li <c:if test="${pageActive eq 'new'}">class="active"</c:if>>
+                    <a href="<s:url value="/phone/new"/>"><s:message code="button.new"/></a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Other <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <s:message code="button.language"/> <b class="caret"></b>
+                    </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="<s:url value="?lang=en"/>"><s:message code="button.language.en"/></a></li>
+                        <li><a href="<s:url value="?lang=pl"/>"><s:message code="button.language.pl"/></a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <s:message code="button.other"/> <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#"><s:message code="button.about"/></a></li>
+                        <li><a href="#"><s:message code="button.contact"/></a></li>
                     </ul>
                 </li>
             </ul>
 
-            <sf:form method="GET" action="phones/list">
+            <sf:form method="GET" servletRelativeAction="/phones/list">
                 <div class="nav navbar-right navbar-btn input-group col-sm-3">
-                    <input type="text" class="form-control" placeholder="Enter name" name="name"/>
+                    <input type="text" class="form-control" placeholder="<s:message code="placeholder.name"/>"
+                           name="name"/>
                     <span class="input-group-btn">
-                        <button class="btn btn-default" type="submit">Search</button>
+                        <button class="btn btn-default" type="submit"><s:message code="button.search"/></button>
                     </span>
                 </div>
             </sf:form>
@@ -54,9 +67,9 @@
 
 <div class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">
-        <p class="navbar-text pull-left">Site Built By Greg Smorag</p>
-        <a class="navbar-btn btn btn-danger pull-right" href="https://twitter.com/grzeshtoph" target="_blank">See My
-            Twitter</a>
+        <p class="navbar-text pull-left"><s:message code="footer.info"/></p>
+        <a class="navbar-btn btn btn-danger pull-right" href="https://twitter.com/grzeshtoph" target="_blank">
+            <s:message code="footer.button.twitter"/></a>
     </div>
 </div>
 

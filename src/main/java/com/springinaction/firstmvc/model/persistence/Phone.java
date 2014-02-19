@@ -2,15 +2,12 @@ package com.springinaction.firstmvc.model.persistence;
 
 import com.google.common.base.Objects;
 import com.springinaction.firstmvc.model.validation.BusinessLogicChecks;
+import com.springinaction.firstmvc.model.validation.FormatChecks;
 import com.springinaction.firstmvc.model.validation.UniquePhoneId;
-import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import javax.validation.GroupSequence;
-import javax.validation.constraints.DecimalMax;
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.*;
 import java.math.BigDecimal;
 
 /**
@@ -18,27 +15,32 @@ import java.math.BigDecimal;
  */
 @Entity
 @Table(name = "PHONES")
-@GroupSequence({Phone.class, BusinessLogicChecks.class})
+@GroupSequence({Phone.class, FormatChecks.class, BusinessLogicChecks.class})
 @SequenceGenerator(name = "phoneSequence", sequenceName = "PHONE_PK_SEQ", initialValue = 1, allocationSize = 1)
 public class Phone {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "phoneSequence")
     @Column(name = "phone_pk")
     private long pk;
+
     @Column(name = "phone_id")
-    @Pattern(regexp = "\\d{1,10}+", message = "{phone.validation.error.id.pattern}")
+    @Size(min=3, max=10, message = "{phone.validation.error.id.size}")
+    @Pattern(regexp = "\\d+", message = "{phone.validation.error.id.pattern}", groups = FormatChecks.class)
     @UniquePhoneId(groups = BusinessLogicChecks.class)
     private String id;
+
     @Column(name = "name")
-    @NotEmpty(message = "{phone.validation.error.name.empty}")
+    @Size(min=1, max=50, message = "{phone.validation.error.name.size}")
     private String name;
+
     @Column(name = "price")
     @NotNull(message = "{phone.validation.error.price.empty}")
     @DecimalMin(value = "5.00", message = "{phone.validation.error.price.min}")
     @DecimalMax(value = "9999.99", message = "{phone.validation.error.price.max}")
     private BigDecimal price;
+
     @Column(name = "opinion")
-    @NotEmpty(message = "{phone.validation.error.opinion.empty}")
+    @Size(min=1, max=300, message = "{phone.validation.error.opinion.size}")
     private String opinion;
 
     public long getPk() {

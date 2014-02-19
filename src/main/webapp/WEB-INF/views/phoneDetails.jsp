@@ -37,15 +37,20 @@
                         a vel sem. Proin malesuada dictum ipsum, ac tristique magna. Nulla sodales purus in vestibulum
                         volutpat.</p>
 
-                    <p class="text-primary text-left">Price: <fmt:formatNumber type="CURRENCY" currencySymbol="USD"
-                                                                               value="${phone.price}"/></p>
+                    <p class="text-primary text-left"><s:message code="label.price"/> <fmt:formatNumber type="CURRENCY"
+                                                                                                        currencySymbol="USD"
+                                                                                                        value="${phone.price}"/></p>
 
                 </div>
 
                 <div class="panel-footer text-right">
-                    <a class="btn btn-default">Watch Now!</a>
+                    <s:url var="editPhoneUrl" value="/phone/edit/{phoneId}">
+                        <s:param name="phoneId" value="${phone.id}"/>
+                    </s:url>
 
-                    <a class="btn btn-primary">Tweet It!</a>
+                    <a class="btn btn-default"><s:message code="button.watchNow"/></a>
+
+                    <a class="btn btn-warning" href="${editPhoneUrl}"><s:message code="button.edit"/></a>
                 </div>
             </div>
         </div>
