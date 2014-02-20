@@ -247,6 +247,17 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../gradle-repo/caches/modules-2/files-2.1/com.amazonaws/aws-java-sdk/1.7.1/edcf6d02dd298807e6abb9dba07648d73f1873bb/aws-java-sdk-1.7.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/../../../gradle-repo/caches/modules-2/files-2.1/com.amazonaws/aws-java-sdk/1.7.1/74581555b45849eaeb30977e34adb63fe02e7467/aws-java-sdk-1.7.1-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
           <root url="jar://$MODULE_DIR$/../../../gradle-repo/caches/modules-2/files-2.1/javax.servlet/servlet-api/2.5/5959582d97d8b61f4d154ca9e495aafd16726e34/servlet-api-2.5.jar!/" />
         </CLASSES>
         <JAVADOC />
@@ -549,6 +560,83 @@
         <JAVADOC />
         <SOURCES>
           <root url="jar://$MODULE_DIR$/../../../gradle-repo/caches/modules-2/files-2.1/org.jboss.logging/jboss-logging/3.1.0.CR2/53dd1691828c99b7e7b353c9b0ad374fe7d73ef5/jboss-logging-3.1.0.CR2-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../gradle-repo/caches/modules-2/files-2.1/org.apache.httpcomponents/httpcore/4.2/9e431c80f58ec65460fcbdaaad802af668bb3fda/httpcore-4.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/../../../gradle-repo/caches/modules-2/files-2.1/org.apache.httpcomponents/httpcore/4.2/d47b19b92c0ef897d15635acc18cbd335f8960c3/httpcore-4.2-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../gradle-repo/caches/modules-2/files-2.1/commons-codec/commons-codec/1.6/b7f0fc8f61ecadeb3695f0b9464755eee44374d4/commons-codec-1.6.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/../../../gradle-repo/caches/modules-2/files-2.1/commons-codec/commons-codec/1.6/61e9f9d11fe3e12ec62f633006e99d75fd7f19c8/commons-codec-1.6-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../gradle-repo/caches/modules-2/files-2.1/org.apache.httpcomponents/httpclient/4.2/894b77b74ac06206075bccc22868ef83d69e383b/httpclient-4.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/../../../gradle-repo/caches/modules-2/files-2.1/org.apache.httpcomponents/httpclient/4.2/559ba161d52801e5e7c51fdbf9f0897979b5b022/httpclient-4.2-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../gradle-repo/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.1.1/82ad1c5f92f6dcc6291f5c46ebacb975eaa844de/jackson-core-2.1.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/../../../gradle-repo/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.1.1/7455a1d51e0bcd266a4930232ec7730cde1114d5/jackson-core-2.1.1-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../gradle-repo/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.1.1/b01cc83e745fc4425a3968fafbf8e5b8254a6dd/jackson-annotations-2.1.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/../../../gradle-repo/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.1.1/ff3e12dcdab94f689002e26238b1cb05b3c785bd/jackson-annotations-2.1.1-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../gradle-repo/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.1.1/38d2b3c0c89af5b937fd98c3e558bf6b58c14aa2/jackson-databind-2.1.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/../../../gradle-repo/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.1.1/405baac235b7e74509bac5001702bc090e2bb9ca/jackson-databind-2.1.1-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../gradle-repo/caches/modules-2/files-2.1/joda-time/joda-time/2.3/56498efd17752898cfcc3868c1b6211a07b12b8f/joda-time-2.3.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/../../../gradle-repo/caches/modules-2/files-2.1/joda-time/joda-time/2.3/ecd8588d8ce0963eb443de31d5fea29e3205f160/joda-time-2.3-sources.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>
