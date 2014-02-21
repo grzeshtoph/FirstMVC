@@ -17,8 +17,8 @@ import java.nio.charset.Charset;
 import java.util.Random;
 
 public class Jets3tTest {
-    private static final String ACCESS_KEY = "AKIAJD2C3LSGQKSAJRCA";
-    private static final String SECRET_KEY = "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";
+    private static final String ACCESS_KEY = "<put value here>";
+    private static final String SECRET_KEY = "<put value here>";
 
     public static void main(String... args) throws IOException {
         ByteSource pictureSource = getSamplePictureSource();
