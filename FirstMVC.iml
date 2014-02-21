@@ -258,6 +258,17 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
+          <root url="jar://C:/dev/gradle-repo/caches/modules-2/files-2.1/net.coobird/thumbnailator/0.4.7/b352d3a6356286f24f38c8c269ad16fc5281f395/thumbnailator-0.4.7.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES>
+          <root url="jar://C:/dev/gradle-repo/caches/modules-2/files-2.1/net.coobird/thumbnailator/0.4.7/d13d25678e02580669c554b18d1259b5d43c5a75/thumbnailator-0.4.7-sources.jar!/"/>
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
           <root url="jar://C:/dev/gradle-repo/caches/modules-2/files-2.1/javax.servlet/servlet-api/3.0-alpha-1/7b491267924e8c81f4f9378caba0ee03423948ca/servlet-api-3.0-alpha-1.jar!/"/>
         </CLASSES>
         <JAVADOC/>
