@@ -7,24 +7,18 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import javax.inject.Inject;
 import java.util.List;
-
-import com.springinaction.firstmvc.model.persistence.Phone;
 
 /**
  * Hibernate implementation of {@link PhoneDAO}.
  */
 @Repository
 public class PhoneDAOHibernateImpl implements PhoneDAO {
+    @Autowired
     private SessionFactory sessionFactory;
-
-    @Inject
-    public PhoneDAOHibernateImpl(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
 
     private Session getCurrentSession() {
         return sessionFactory.getCurrentSession();

@@ -30,6 +30,7 @@
                 </li>
                 <li <c:if test="${pageActive eq 'new'}">class="active"</c:if>>
                     <a href="<s:url value="/phone/new"/>"><s:message code="button.new"/></a></li>
+                <c:if test="${pageActive eq 'home'}">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <s:message code="button.language"/> <b class="caret"></b>
@@ -39,6 +40,7 @@
                         <li><a href="<s:url value="?lang=pl"/>"><s:message code="button.language.pl"/></a></li>
                     </ul>
                 </li>
+                </c:if>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <s:message code="button.other"/> <b class="caret"></b>
@@ -65,7 +67,7 @@
 
 <t:insertAttribute name="content"/>
 
-<div class="navbar navbar-default navbar-fixed-bottom">
+<div class="navbar navbar-default">
     <div class="container">
         <p class="navbar-text pull-left"><s:message code="footer.info"/></p>
         <a class="navbar-btn btn btn-danger pull-right" href="https://twitter.com/grzeshtoph" target="_blank">

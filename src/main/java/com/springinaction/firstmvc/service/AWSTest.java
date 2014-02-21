@@ -7,17 +7,20 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.*;
 import com.google.common.io.ByteSource;
-import com.google.common.io.Closer;
+import com.google.common.io.FileWriteMode;
 import com.google.common.io.Files;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.Writer;
 import java.nio.charset.Charset;
 import java.util.Random;
 
 public class AWSTest {
     public static void main(String... args) throws IOException {
-        Closer streamCloser = Closer.create();
-        try {
+        ByteSource pictureSource = getSamplePictureSource();
+        try (InputStream pictureStream = pictureSource.openStream()) {
             AmazonS3 s3 = new AmazonS3Client(new ClasspathPropertiesFileCredentialsProvider());
             System.out.println("List of buckets:");
             for (Bucket bucket : s3.listBuckets()) {
@@ -25,9 +28,8 @@ public class AWSTest {
             }
 
             s3.putObject(new PutObjectRequest("phonecatalog", "testTextFile", createSampleFile()));
-            ByteSource pictureSource = getSamplePictureSource();
             s3.putObject(new PutObjectRequest("phonecatalog", "testPicture",
-                    streamCloser.register(pictureSource.openStream()),
+                    pictureStream,
                     getSamplePictureObjectMetadata(pictureSource)));
 
             System.out.println("1st List of objects:");
@@ -57,8 +59,6 @@ public class AWSTest {
                     + "a serious internal problem while trying to communicate with S3, "
                     + "such as not being able to access the network.");
             System.out.println("Error Message: " + ace.getMessage());
-        } finally {
-            streamCloser.close();
         }
     }
 
@@ -73,13 +73,13 @@ public class AWSTest {
         File file = File.createTempFile("aws-java-sdk-", ".txt");
         file.deleteOnExit();
 
-        Writer writer = Files.newWriterSupplier(file, Charset.forName("UTF-8")).getOutput();
-        writer.write("abcdefghijklmnopqrstuvwxyz\n");
-        writer.write("01234567890112345678901234\n");
-        writer.write("!@#$%^&*()-=[]{};':',.<>/?\n");
-        writer.write("01234567890112345678901234\n");
-        writer.write("abcdefghijklmnopqrstuvwxyz\n");
-        writer.close();
+        try (Writer writer = Files.asCharSink(file, Charset.forName("UTF-8"), FileWriteMode.APPEND).openStream()) {
+            writer.write("abcdefghijklmnopqrstuvwxyz\n");
+            writer.write("01234567890112345678901234\n");
+            writer.write("!@#$%^&*()-=[]{};':',.<>/?\n");
+            writer.write("01234567890112345678901234\n");
+            writer.write("abcdefghijklmnopqrstuvwxyz\n");
+        }
 
         return file;
     }

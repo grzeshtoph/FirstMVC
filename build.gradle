@@ -7,7 +7,7 @@ group = 'com.springinaction'
 
 version = '1.0-SNAPSHOT'
 war.archiveName = 'FirstMVC.war'
-project.ext.springVersion = '3.2.4.RELEASE'
+project.ext.springVersion = '4.0.2.RELEASE'
 
 tasks.withType(Compile) {
     options.compilerArgs << "-Xlint:all"
@@ -21,7 +21,7 @@ dependencies {
     testCompile "junit:junit:4.11"
     testCompile "org.springframework:spring-test:$springVersion"
 
-    providedCompile "javax.servlet:servlet-api:2.5"
+    providedCompile "javax.servlet:servlet-api:3.0-alpha-1"
 
     compile "org.slf4j:slf4j-log4j12:1.5.11"
     compile "org.springframework:spring-context:$springVersion"
@@ -30,16 +30,15 @@ dependencies {
     compile "org.springframework:spring-webmvc:$springVersion"
     compile "org.springframework:spring-orm:$springVersion"
     compile "com.google.guava:guava:16.0.1"
-    compile "javax.inject:javax.inject:1"
     compile "taglibs:standard:1.1.2"
     compile "org.apache.tiles:tiles-jsp:2.2.2"
     compile "org.postgresql:postgresql:9.2-1003-jdbc4"
     compile "commons-dbcp:commons-dbcp:1.4"
-    compile "javax.persistence:persistence-api:1.0.2"
     compile "javax.validation:validation-api:1.0.0.GA"
     compile "javax.transaction:jta:1.1"
-    compile "org.hibernate:hibernate-core:3.3.2.GA"
-    compile "org.hibernate:hibernate-annotations:3.4.0.GA"
+    compile "org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final"
+    compile "org.hibernate:hibernate-core:4.3.1.Final"
+    compile "org.hibernate:hibernate-annotations:3.5.6-Final"
     compile "org.hibernate:hibernate-validator:4.3.1.Final"
     compile "javassist:javassist:3.9.0.GA"
     compile "cglib:cglib-nodep:2.2"

@@ -4,20 +4,24 @@ import com.springinaction.firstmvc.dao.PhoneDAO;
 import com.springinaction.firstmvc.model.persistence.Phone;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 /**
  * Sole implementation of {@link PhoneService}.
  */
+@Service
+@Transactional
 public class PhoneServiceImpl implements PhoneService {
     private static final Logger LOG = LoggerFactory.getLogger(PhoneServiceImpl.class);
+    @Autowired
     private PhoneDAO phoneDAO;
 
-    public void setPhoneDAO(PhoneDAO phoneDAO) {
-        this.phoneDAO = phoneDAO;
-    }
-
+    @Transactional(readOnly = true)
     @Override
     public List<Phone> getPhones() {
         List<Phone> phones = phoneDAO.getPhones();
@@ -27,6 +31,7 @@ public class PhoneServiceImpl implements PhoneService {
         return phones;
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<Phone> getPhones(String name) {
         List<Phone> phones = phoneDAO.getPhones(name);
@@ -36,6 +41,7 @@ public class PhoneServiceImpl implements PhoneService {
         return phones;
     }
 
+    @Transactional(readOnly = true)
     @Override
     public Phone getPhone(String phoneId) {
         final Phone phone = phoneDAO.getPhone(phoneId);

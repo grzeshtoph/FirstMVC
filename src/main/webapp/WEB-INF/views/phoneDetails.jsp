@@ -37,8 +37,8 @@
                         a vel sem. Proin malesuada dictum ipsum, ac tristique magna. Nulla sodales purus in vestibulum
                         volutpat.</p>
 
-                    <p class="text-primary text-left"><s:message code="label.price"/> <fmt:formatNumber type="CURRENCY"
-                                                                                                        currencySymbol="USD"
+                    <p class="text-primary text-left"><s:message code="label.price"/>&nbsp;<fmt:formatNumber type="CURRENCY"
+                                                                                                        currencySymbol="USD "
                                                                                                         value="${phone.price}"/></p>
 
                 </div>

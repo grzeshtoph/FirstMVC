@@ -1,10 +1,9 @@
 package com.springinaction.firstmvc.model.validation;
 
 import com.google.common.base.Strings;
-import com.springinaction.firstmvc.dao.PhoneDAO;
 import com.springinaction.firstmvc.service.PhoneService;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.inject.Inject;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
@@ -12,7 +11,7 @@ import javax.validation.ConstraintValidatorContext;
  * Validator implementation for {@link UniquePhoneId} annotation.
  */
 public class UniquePhoneIdValidator implements ConstraintValidator<UniquePhoneId, String> {
-    @Inject
+    @Autowired
     private PhoneService phoneListService;
 
     @Override

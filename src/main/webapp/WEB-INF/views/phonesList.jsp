@@ -6,7 +6,7 @@
 <div class="container">
     <c:forEach items="${phoneList}" var="phone">
         <div class="row">
-            <s:url var="phoneDetailsUrl" value="/phone/details?id={phoneId}">
+            <s:url var="phoneDetailsUrl" value="/phone/details/{phoneId}">
                 <s:param name="phoneId" value="${phone.id}"/>
             </s:url>
             <div class="panel panel-default">
