@@ -7,6 +7,7 @@ import org.jets3t.service.S3Service;
 import org.jets3t.service.S3ServiceException;
 import org.jets3t.service.impl.rest.httpclient.RestS3Service;
 import org.jets3t.service.model.S3Bucket;
+import org.jets3t.service.model.S3Object;
 import org.jets3t.service.security.AWSCredentials;
 
 import java.io.File;
@@ -17,38 +18,59 @@ import java.nio.charset.Charset;
 import java.util.Random;
 
 public class Jets3tTest {
-    private static final String ACCESS_KEY = "<put value here>";
-    private static final String SECRET_KEY = "<put value here>";
+    private static final String OBJECT_ID_PREFIX = Jets3tTest.class.getSimpleName() + "_";
+    private static final String PICTURE_FILE_ID = OBJECT_ID_PREFIX + "testPicture";
+    private static final String THUMBNAIL_FILE_ID = OBJECT_ID_PREFIX + "testPictureThumbnail";
+    private static final String TEXT_FILE_ID = OBJECT_ID_PREFIX + "testTextFile";
+    private static final String ACCESS_KEY = "";
+    private static final String SECRET_KEY = "";
 
     public static void main(String... args) throws IOException {
-        ByteSource pictureSource = getSamplePictureSource();
-        try (InputStream pictureStream = pictureSource.openStream()) {
+        File samplePicture = getSamplePicture();
+        ByteSource pictureSource = Files.asByteSource(samplePicture);
+        ByteSource thumbnailSource = Files.asByteSource(getSamplePictureThumbnail(samplePicture));
+
+        try (InputStream pictureStream = pictureSource.openStream();
+             InputStream thumbnailStream = thumbnailSource.openStream()) {
             AWSCredentials awsCredentials = new AWSCredentials(ACCESS_KEY, SECRET_KEY);
             S3Service s3Service = new RestS3Service(awsCredentials);
+
             System.out.println("List of buckets:");
-            for (S3Bucket bucket : s3Service.listAllBuckets()) {
+            S3Bucket[] buckets = s3Service.listAllBuckets();
+            for (S3Bucket bucket : buckets) {
                 System.out.println(" - " + bucket.getName());
             }
 
-//            s3.putObject(new PutObjectRequest("phonecatalog", "testTextFile", createSampleFile()));
-//            s3.putObject(new PutObjectRequest("phonecatalog", "testPicture",
-//                    pictureStream,
-//                    getSamplePictureObjectMetadata(pictureSource)));
-//
-//            System.out.println("1st List of objects:");
-//            ObjectListing objectListing = s3.listObjects(new ListObjectsRequest().withBucketName("phonecatalog"));
-//            for (S3ObjectSummary objectSummary : objectListing.getObjectSummaries()) {
-//                System.out.println(" - " + objectSummary.getKey() + "  " +
-//                        "(size = " + objectSummary.getSize() + ")");
-//            }
-//            s3.deleteObjects(new DeleteObjectsRequest("phonecatalog").withKeys("testPicture", "testTextFile"));
-//
-//            System.out.println("2nd List of objects:");
-//            objectListing = s3.listObjects(new ListObjectsRequest().withBucketName("phonecatalog"));
-//            for (S3ObjectSummary objectSummary : objectListing.getObjectSummaries()) {
-//                System.out.println(" - " + objectSummary.getKey() + "  " +
-//                        "(size = " + objectSummary.getSize() + ")");
-//            }
+            S3Bucket bucket = s3Service.getBucket("phonecatalog");
+            s3Service.deleteMultipleObjects(bucket.getName(), new String[]{PICTURE_FILE_ID, TEXT_FILE_ID});
+
+            S3Object textFileObject = new S3Object(TEXT_FILE_ID);
+            File sampleFile = createSampleFile();
+            textFileObject.setDataInputFile(sampleFile);
+            textFileObject.setContentLength(sampleFile.length());
+            textFileObject.setContentType("text/plain");
+
+            S3Object testPictureObject = new S3Object(PICTURE_FILE_ID);
+            testPictureObject.setDataInputStream(pictureStream);
+            testPictureObject.setContentLength(pictureSource.size());
+            testPictureObject.setContentType("image/jpeg");
+
+            S3Object testThumbnailObject = new S3Object(THUMBNAIL_FILE_ID);
+            testThumbnailObject.setDataInputStream(thumbnailStream);
+            testThumbnailObject.setContentLength(thumbnailSource.size());
+            testThumbnailObject.setContentType("image/jpeg");
+
+            s3Service.putObject(bucket, textFileObject);
+            s3Service.putObject(bucket, testPictureObject);
+            s3Service.putObject(bucket, testThumbnailObject);
+
+            System.out.println("1st List of objects:");
+            for (S3Bucket bucket1 : buckets) {
+                System.out.println("  - bucket " + bucket1.getName());
+                for (S3Object object : s3Service.listObjects(bucket1.getName())) {
+                    System.out.println("    - " + object.getKey() + " (" + object.getContentLength() + "B)");
+                }
+            }
         } catch (S3ServiceException e) {
             System.out.println("Caught an S3ServiceException, which means your request made it "
                     + "to Amazon S3, but was rejected with an error response for some reason.");
@@ -82,17 +104,16 @@ public class Jets3tTest {
         return file;
     }
 
-    private static ByteSource getSamplePictureSource() {
+    private static File getSamplePicture() {
         String[] pictures = new String[]{"C:\\Users\\Public\\Pictures\\Sample Pictures\\Chrysanthemum.jpg",
                 "C:\\Users\\Public\\Pictures\\Sample Pictures\\Jellyfish.jpg"};
 
-        return Files.asByteSource(new File(pictures[new Random().nextInt(2)]));
+        return new File(pictures[new Random().nextInt(2)]);
     }
-//
-//    private static ObjectMetadata getSamplePictureObjectMetadata(ByteSource pictureSource) throws IOException {
-//        ObjectMetadata metadata = new ObjectMetadata();
-//        metadata.setContentLength(pictureSource.size());
-//        metadata.setContentType("image/jpeg");
-//        return metadata;
-//    }
+
+    private static File getSamplePictureThumbnail(File inputFile) throws IOException {
+        File tmpFile = File.createTempFile(OBJECT_ID_PREFIX, ".jpg");
+        tmpFile.deleteOnExit();
+        return ThumbnailatorTest.makeThumbnailOf(inputFile, tmpFile);
+    }
 }
