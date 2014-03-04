@@ -11,7 +11,7 @@ import java.io.*;
 public class ThumbnailatorTest {
     private static final int MAX_WIDTH = 100;
     private static final int MAX_HEIGHT = 100;
-    private static final Color OVERLAY_COLOR = Color.decode("#99CCFF");
+    private static final Color OVERLAY_COLOR = Color.decode("#FF9A40");
 
     public static void main(String... args) throws IOException {
         Thumbnails
@@ -27,7 +27,7 @@ public class ThumbnailatorTest {
                 .of(inputFile)
                 .size(MAX_WIDTH, MAX_HEIGHT)
                 .addFilter(new Canvas(MAX_WIDTH, MAX_HEIGHT, Positions.CENTER, Color.WHITE))
-                .addFilter(new Colorize(OVERLAY_COLOR, 0.5f))
+                .addFilter(new Colorize(OVERLAY_COLOR, 0.7f))
                 .toFile(outFile);
 
         return outFile;

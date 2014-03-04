@@ -1,12 +1,11 @@
 package com.springinaction.firstmvc.model.persistence;
 
 import com.google.common.base.Objects;
-import com.springinaction.firstmvc.model.validation.BusinessLogicChecks;
+import com.springinaction.firstmvc.model.validation.NewPhoneChecks;
 import com.springinaction.firstmvc.model.validation.FormatChecks;
 import com.springinaction.firstmvc.model.validation.UniquePhoneId;
 
 import javax.persistence.*;
-import javax.validation.GroupSequence;
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
 
@@ -15,7 +14,6 @@ import java.math.BigDecimal;
  */
 @Entity
 @Table(name = "PHONES")
-@GroupSequence({Phone.class, FormatChecks.class, BusinessLogicChecks.class})
 @SequenceGenerator(name = "phoneSequence", sequenceName = "PHONE_PK_SEQ", initialValue = 1, allocationSize = 1)
 public class Phone {
     @Id
@@ -26,7 +24,7 @@ public class Phone {
     @Column(name = "phone_id")
     @Size(min=3, max=10, message = "{phone.validation.error.id.size}")
     @Pattern(regexp = "\\d+", message = "{phone.validation.error.id.pattern}", groups = FormatChecks.class)
-    @UniquePhoneId(groups = BusinessLogicChecks.class)
+    @UniquePhoneId(groups = NewPhoneChecks.class)
     private String id;
 
     @Column(name = "name")

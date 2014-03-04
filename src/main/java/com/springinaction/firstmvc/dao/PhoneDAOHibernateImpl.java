@@ -46,4 +46,11 @@ public class PhoneDAOHibernateImpl implements PhoneDAO {
     public long createNew(Phone phone) {
         return (Long) getCurrentSession().save(phone);
     }
+
+    @Override
+    public long update(Phone phone) {
+        Phone existingPhone = getPhone(phone.getId());
+        phone.setPk(existingPhone.getPk());
+        return ((Phone)getCurrentSession().merge(phone)).getPk();
+    }
 }

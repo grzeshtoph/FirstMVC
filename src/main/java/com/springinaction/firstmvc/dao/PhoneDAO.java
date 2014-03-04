@@ -15,4 +15,6 @@ public interface PhoneDAO {
     Phone getPhone(String id);
 
     long createNew(Phone phone);
+
+    long update(Phone phone);
 }

@@ -19,6 +19,10 @@
         <put-attribute name="content" value="/WEB-INF/views/newPhone.jsp"/>
     </definition>
 
+    <definition name="phone/edit" extends="template">
+        <put-attribute name="content" value="/WEB-INF/views/editPhone.jsp"/>
+    </definition>
+
     <definition name="phones/list" extends="template">
         <put-attribute name="content" value="/WEB-INF/views/phonesList.jsp"/>
     </definition>

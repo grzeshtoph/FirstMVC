@@ -16,4 +16,6 @@ public interface PhoneService {
     Phone getPhone(String phoneId);
 
     long createNew(Phone phone);
+
+    long updatePhone(Phone phone);
 }

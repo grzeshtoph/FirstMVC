@@ -62,4 +62,13 @@ public class PhoneServiceImpl implements PhoneService {
 
         return pk;
     }
+
+    @Override
+    public long updatePhone(Phone phone) {
+        final long pk = phoneDAO.update(phone);
+
+        LOG.info("The phone updated: pk = {}", pk);
+
+        return pk;
+    }
 }
