@@ -22,8 +22,8 @@ public class Jets3tTest {
     private static final String PICTURE_FILE_ID = OBJECT_ID_PREFIX + "testPicture";
     private static final String THUMBNAIL_FILE_ID = OBJECT_ID_PREFIX + "testPictureThumbnail";
     private static final String TEXT_FILE_ID = OBJECT_ID_PREFIX + "testTextFile";
-    private static final String ACCESS_KEY = "AKIAIRIIHFOW4JUMASPA";
-    private static final String SECRET_KEY = "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";
+    private static final String ACCESS_KEY = "";
+    private static final String SECRET_KEY = "";
 
     public static void main(String... args) throws IOException {
         File samplePicture = getSamplePicture();
