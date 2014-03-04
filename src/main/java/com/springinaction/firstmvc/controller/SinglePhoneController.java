@@ -1,9 +1,10 @@
 package com.springinaction.firstmvc.controller;
 
 import com.springinaction.firstmvc.model.persistence.Phone;
-import com.springinaction.firstmvc.model.validation.NewPhoneChecks;
 import com.springinaction.firstmvc.model.validation.FormatChecks;
+import com.springinaction.firstmvc.model.validation.NewPhoneChecks;
 import com.springinaction.firstmvc.service.PhoneService;
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -51,6 +52,8 @@ public class SinglePhoneController {
             return "phone/new";
         }
 
+        escapeHtml(phone);
+
         phoneService.createNew(phone);
 
         return "redirect:/phone/details/" + phone.getId();
@@ -58,7 +61,11 @@ public class SinglePhoneController {
 
     @RequestMapping(value = "/edit/{phoneId}", method = GET)
     public String editOpenForm(@PathVariable String phoneId, Model model) {
-        model.addAttribute(phoneService.getPhone(phoneId));
+        Phone phone = phoneService.getPhone(phoneId);
+
+        unescapeHtml(phone);
+
+        model.addAttribute(phone);
         return "phone/edit";
     }
 
@@ -72,8 +79,20 @@ public class SinglePhoneController {
             return "phone/edit";
         }
 
+        escapeHtml(phone);
+
         phoneService.updatePhone(phone);
 
         return "redirect:/phone/details/" + phone.getId();
+    }
+
+    private void escapeHtml(Phone phone) {
+        phone.setName(StringEscapeUtils.escapeHtml4(phone.getName()));
+        phone.setOpinion(StringEscapeUtils.escapeHtml4(phone.getOpinion()));
+    }
+
+    private void unescapeHtml(Phone phone) {
+        phone.setName(StringEscapeUtils.unescapeHtml4(phone.getName()));
+        phone.setOpinion(StringEscapeUtils.unescapeHtml4(phone.getOpinion()));
     }
 }
