@@ -52,4 +52,7 @@
 
     <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"
           p:messageInterpolator="#{messageInterpolator}"/>
+
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
+          p:maxUploadSize="5000000"/>
 </beans>
