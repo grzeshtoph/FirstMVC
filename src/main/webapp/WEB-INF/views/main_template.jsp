@@ -4,6 +4,7 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="t" uri="http://tiles.apache.org/tags-tiles" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
     <title><s:message code="app.title"/></title>
@@ -48,12 +49,13 @@
                     <ul class="dropdown-menu">
                         <li><a href="#"><s:message code="button.about"/></a></li>
                         <li><a href="#"><s:message code="button.contact"/></a></li>
+                        <li><a href="<s:url value="/j_spring_security_logout"/>"><s:message code="button.logout"/></a></li>
                     </ul>
                 </li>
             </ul>
 
             <sf:form method="GET" servletRelativeAction="/phones/list">
-                <div class="nav navbar-right navbar-btn input-group col-sm-3">
+                <div class="nav navbar-btn navbar-left input-group col-sm-3">
                     <input type="text" class="form-control" placeholder="<s:message code="placeholder.name"/>"
                            name="name"/>
                     <span class="input-group-btn">
@@ -61,6 +63,12 @@
                     </span>
                 </div>
             </sf:form>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><span class="navbar-text">
+                    <sec:authentication property="principal.username" />
+                </span></li>
+            </ul>
         </div>
     </div>
 </div>

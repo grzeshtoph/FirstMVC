@@ -10,4 +10,5 @@
 
     <import resource="phonecatalog-db.xml"/>
     <import resource="phonecatalog-tx.xml"/>
+    <import resource="phonecatalog-security.xml"/>
 </beans>

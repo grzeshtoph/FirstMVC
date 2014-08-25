@@ -8,8 +8,9 @@ group = 'com.springinaction'
 version = '1.0-SNAPSHOT'
 war.archiveName = 'FirstMVC.war'
 project.ext.springVersion = '4.0.2.RELEASE'
+project.ext.springSecVersion = '3.2.5.RELEASE'
 
-tasks.withType(Compile) {
+tasks.withType(JavaCompile) {
     options.compilerArgs << "-Xlint:all"
 }
 
@@ -29,6 +30,10 @@ dependencies {
     compile "org.springframework:spring-aop:$springVersion"
     compile "org.springframework:spring-webmvc:$springVersion"
     compile "org.springframework:spring-orm:$springVersion"
+    compile "org.springframework.security:spring-security-core:$springSecVersion"
+    compile "org.springframework.security:spring-security-config:$springSecVersion"
+    compile "org.springframework.security:spring-security-web:$springSecVersion"
+    compile "org.springframework.security:spring-security-taglibs:$springSecVersion"
     compile "com.google.guava:guava:[16.+,)"
     compile "taglibs:standard:1.1.2"
     compile "org.apache.tiles:tiles-jsp:2.2.2"
