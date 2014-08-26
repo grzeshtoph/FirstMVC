@@ -124,8 +124,6 @@ public class SinglePhoneController {
     private void validateImage(MultipartFile image, HttpServletRequest request) throws ImageUploadException {
         if (!image.getContentType().equals("image.jpeg"))
             throw new ImageUploadException(
-//                    messageSource.getMessage("phone.validation.error.picture.format", null,
-//                    localeResolver.resolveLocale(request))
                     "phone.validation.error.picture.format"
             );
     }

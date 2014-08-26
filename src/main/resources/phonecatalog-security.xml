@@ -13,6 +13,8 @@
 
         <security:intercept-url pattern="/resources/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <security:intercept-url pattern="/login*" access="IS_AUTHENTICATED_ANONYMOUSLY" requires-channel="https"/>
+        <security:intercept-url pattern="/phone/new*/**" access="ROLE_PHONE_ADMIN"/>
+        <security:intercept-url pattern="/phone/edit*/**" access="ROLE_PHONE_ADMIN"/>
         <security:intercept-url pattern="/**" access="ROLE_PHONE_READER"/>
 
         <security:remember-me key="phonecatalogKey"
@@ -21,7 +23,7 @@
     </security:http>
 
     <security:user-service id="phoneInMemUserService">
-        <security:user name="phonemanager" password="phonemanager" authorities="ROLE_PHONE_READER"/>
+        <security:user name="phonemanager" password="phonemanager" authorities="ROLE_PHONE_READER,ROLE_PHONE_ADMIN"/>
         <security:user name="phonereader" password="phonereader" authorities="ROLE_PHONE_READER"/>
     </security:user-service>
 
