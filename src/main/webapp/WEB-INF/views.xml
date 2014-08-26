@@ -26,4 +26,6 @@
     <definition name="phones/list" extends="template">
         <put-attribute name="content" value="/WEB-INF/views/phonesList.jsp"/>
     </definition>
+
+    <definition name="login" template="/WEB-INF/views/login.jsp" />
 </tiles-definitions>

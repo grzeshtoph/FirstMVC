@@ -10,6 +10,20 @@ war.archiveName = 'FirstMVC.war'
 project.ext.springVersion = '4.0.2.RELEASE'
 project.ext.springSecVersion = '3.2.5.RELEASE'
 
+[jettyRun, jettyRunWar]*.configure {
+    def httpConnector = jettyRun.class.classLoader.loadClass('org.mortbay.jetty.nio.SelectChannelConnector').newInstance()
+    httpConnector.port = 8080
+    def httpsConnector = jettyRun.class.classLoader.loadClass('org.mortbay.jetty.security.SslSocketConnector').newInstance()
+    httpsConnector.port = 8443
+    httpsConnector.keystore = "C:\\dev\\keystore\\keystore"
+    httpsConnector.keyPassword = "password"
+//    httpsConnector.truststore = "cacerts"
+//    httpsConnector.trustPassword = "cacertspwd"
+
+    connectors = [httpConnector,httpsConnector]
+    contextPath = 'FirstMVC'
+}
+
 tasks.withType(JavaCompile) {
     options.compilerArgs << "-Xlint:all"
 }

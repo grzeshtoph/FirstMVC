@@ -7,7 +7,13 @@
        http://www.springframework.org/schema/security
        http://www.springframework.org/schema/security/spring-security.xsd">
     <security:http auto-config="true">
-        <security:intercept-url pattern="/**" access="ROLE_PHONE_READER" />
+        <security:form-login login-processing-url="/j_spring_security_check"
+                             login-page="/login"
+                             authentication-failure-url="/login?login_error=t"/>
+
+        <security:intercept-url pattern="/resources/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <security:intercept-url pattern="/login*" access="IS_AUTHENTICATED_ANONYMOUSLY" requires-channel="https"/>
+        <security:intercept-url pattern="/**" access="ROLE_PHONE_READER"/>
     </security:http>
 
     <security:user-service id="phoneInMemUserService">

@@ -14,7 +14,12 @@ public class HomeController {
     @Autowired
     private PhoneService phoneService;
 
-    @RequestMapping({"/", "/home"})
+    @RequestMapping("/")
+    public String redirectToHomePage(Model model) {
+        return "redirect:/home";
+    }
+
+    @RequestMapping("/home")
     public String showHomePage(Model model) {
         model.addAttribute("greeting", "Welcome to the Phone Catalog");
         model.addAttribute(phoneService.getPhones());
