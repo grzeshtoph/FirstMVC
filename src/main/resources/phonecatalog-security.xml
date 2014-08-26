@@ -14,6 +14,10 @@
         <security:intercept-url pattern="/resources/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <security:intercept-url pattern="/login*" access="IS_AUTHENTICATED_ANONYMOUSLY" requires-channel="https"/>
         <security:intercept-url pattern="/**" access="ROLE_PHONE_READER"/>
+
+        <security:remember-me key="phonecatalogKey"
+                              token-validity-seconds="2419200"
+                              user-service-ref="phoneInMemUserService"/>
     </security:http>
 
     <security:user-service id="phoneInMemUserService">
